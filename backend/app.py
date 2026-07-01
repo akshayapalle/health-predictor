@@ -34,7 +34,7 @@ def validate_patient_data(data):
 
     try:
         dob = datetime.strptime(data['date_of_birth'], '%Y-%m-%d')
-        if dob >= datetime.today():
+        if dob.date() >= datetime.today().date():
             errors.append('Date of birth cannot be today or a future date.')
     except (ValueError, KeyError):
         errors.append('Invalid date of birth format. Use YYYY-MM-DD.')

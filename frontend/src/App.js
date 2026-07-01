@@ -199,7 +199,7 @@ function App() {
                   name="full_name"
                   value={formData.full_name}
                   onChange={handleChange}
-                  placeholder="John Doe"
+                  placeholder="Enter full name"
                 />
               </div>
               <div className="form-group">
@@ -218,7 +218,7 @@ function App() {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  placeholder="john@example.com"
+                  placeholder="Enter email address"
                 />
               </div>
               <div className="form-group">

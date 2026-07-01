@@ -1,4 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
 
 db = SQLAlchemy()
 
@@ -13,10 +14,16 @@ class Patient(db.Model):
     remarks = db.Column(db.Text, nullable=True)
 
     def to_dict(self):
+        try:
+            dob = datetime.strptime(self.date_of_birth, '%Y-%m-%d')
+            formatted_dob = dob.strftime('%d/%m/%Y')
+        except:
+            formatted_dob = self.date_of_birth
+
         return {
             'id': self.id,
             'full_name': self.full_name,
-            'date_of_birth': self.date_of_birth,
+            'date_of_birth': formatted_dob,
             'email': self.email,
             'glucose': self.glucose,
             'haemoglobin': self.haemoglobin,
